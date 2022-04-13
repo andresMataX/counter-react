@@ -36,4 +36,16 @@ describe('Pruebas en <CounterApp />', () => {
 
         expect(valorContador).toBe('9');
     });
+
+    test('debe de reiniciar el valor del contador al presionar el botón', () => {
+        const wrapper = shallow(<CounterApp value={105} />);
+
+        wrapper.find('button').at(0).simulate('click');
+        wrapper.find('button').at(0).simulate('click');
+        wrapper.find('button').at(1).simulate('click');
+
+        const valorContador = wrapper.find('h2').text().trim();
+
+        expect(valorContador).toBe('105');
+    });
 });
